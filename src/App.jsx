@@ -13,7 +13,7 @@ const App = () => {
       id: 1,
       name: "Spaghetti Bolognese",
       image:
-        "https://images.unsplash.com/photo-1560684352-8497838a2229?q=80&w=2628&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1606756790138-261d2b21cd75?q=80&w=3703&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       ingredients: ["Spaghetti", "Meat", "Tomato Sauce"],
       description:
         "Our shrimp sauce is made with mozarella, a creamy taste of shrimp with extra kick of spices.",
@@ -56,7 +56,7 @@ const App = () => {
   return (
     <>
       <div className="p-4 bg-white min-h-screen overflow-hidden">
-        <div className="container mx-auto pb-[5rem]">
+        <div className="container md:max-w-2xl mx-auto pb-[5rem]">
           <Header />
           <MealList
             meals={meals}

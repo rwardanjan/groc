@@ -82,7 +82,7 @@ const MealForm = ({
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="">
+      <form onSubmit={handleSubmit}>
         <div className="mb-5">
           <label
             htmlFor="name"
@@ -93,6 +93,8 @@ const MealForm = ({
           <input
             type="text"
             id="name"
+            name="name"
+            value={meal.name}
             onChange={(e) => handleChange(e)}
             className="bg-gray-100 text-gray-900 text-sm rounded-xl focus:ring-black focus:border-black block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-white dark:focus:border-white"
             placeholder="Pasta Carbonara"
@@ -109,8 +111,11 @@ const MealForm = ({
           <textarea
             id="description"
             rows="4"
+            name="description"
+            value={meal.description}
+            onChange={(e) => handleChange(e)}
             className="block p-2.5 w-full text-sm text-gray-900 bg-gray-100 rounded-lg  focus:ring-black focus:border-black dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-black dark:focus:border-black"
-            placeholder="Write event description..."
+            placeholder="Write description..."
           ></textarea>
         </div>
         <div className="mb-5">
