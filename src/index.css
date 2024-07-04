@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+html, body {
+  height: 100%;
+  position:relative;
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+}
+.footer-nav{
+  padding-bottom: env(safe-area-inset-bottom);
+}
+#drawer-form div:has( > button[type="submit"]) {
+  position: fixed;
+  bottom: calc(env(safe-area-inset-bottom) + 3.3rem);
+  width: 100%;
+  background: white;
+  left: 0;
+  padding: 1rem 1rem;
+}
+#drawer-form {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 12rem)!important;
+}
