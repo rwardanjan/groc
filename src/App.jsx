@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Header from "./components/Header";
-import MealForm from "./components/MealForm";
-import MealList from "./components/MealList";
 import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Plan from "./pages/Plan";
+import List from "./pages/List";
 import Aside from "./components/Aside";
 import "./index.css";
 
@@ -40,7 +42,6 @@ const App = () => {
   };
 
   const toggleAside = () => {
-    console.log("toggleAside");
     setIsAsideOpen(!isAsideOpen);
     console.log(isAsideOpen);
   };
@@ -58,11 +59,20 @@ const App = () => {
       <div className="p-4 bg-white min-h-screen overflow-hidden">
         <div className="container md:max-w-2xl mx-auto pb-[5rem]">
           <Header />
-          <MealList
-            meals={meals}
-            deleteMeal={deleteMeal}
-            setMealToEdit={setMealToEdit}
-          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  meals={meals}
+                  deleteMeal={deleteMeal}
+                  setMealToEdit={setMealToEdit}
+                />
+              }
+            />
+            <Route path="/plan" element={<Plan />} />
+            <Route path="/list" element={<List />} />
+          </Routes>
         </div>
         <Footer toggleAside={toggleAside} />
       </div>

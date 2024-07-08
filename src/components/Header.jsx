@@ -16,7 +16,7 @@ const Header = () => {
           alt=""
         />
       </div>
-      <form className="max-w-sm mx-auto">
+      <form className="">
         <label
           htmlFor="email-address-icon"
           className="block mb-2 text-sm font-medium sr-only text-gray-900 dark:text-white"
@@ -26,17 +26,19 @@ const Header = () => {
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
             <svg
-              className="size-5 text-gray-900 dark:text-gray-300"
+              className="w-5 h-5 text-gray-500 dark:text-gray-400"
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
             >
               <path
+                stroke="currentColor"
                 strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                strokeWidth="2"
+                d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
               />
             </svg>
           </div>

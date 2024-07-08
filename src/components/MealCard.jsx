@@ -33,59 +33,6 @@ const MealCard = ({ meal, setMealToEdit, deleteMeal }) => {
   }
   return (
     <div className="flex items-center gap-6 relative mt-3" ref={dropdownRef}>
-      <button
-        onClick={toggleDropdown}
-        id="dropdownMenuIconHorizontalButton"
-        data-dropdown-toggle="dropdownDotsHorizontal"
-        className="absolute right-0 top-0 inline-flex items-center text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        type="button"
-      >
-        <svg
-          className="w-5 h-5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 16 3"
-        >
-          <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-        </svg>
-      </button>
-      <div
-        id="dropdownDotsHorizontal"
-        className={`z-10 ${
-          isDropdownOpen ? "block" : "hidden"
-        } bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 absolute right-0 top-10`}
-      >
-        <ul
-          className="py-2 text-sm text-gray-700 dark:text-gray-200"
-          aria-labelledby="dropdownMenuIconHorizontalButton"
-        >
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
-              View
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
-              Edit
-            </a>
-          </li>
-        </ul>
-        <div className="py-2">
-          <a
-            href="#"
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-          >
-            Delete
-          </a>
-        </div>
-      </div>
       <div
         className="aspect-square h-full rounded-2xl min-w-[25%] max-w-[25%]"
         style={{
@@ -96,60 +43,123 @@ const MealCard = ({ meal, setMealToEdit, deleteMeal }) => {
         }}
       ></div>
       <div className="py-4">
-        <p className="font-bold text-gray-700 text-l leading-7 mb-2">
+        <p className="font-bold text-gray-700 text-l leading-7 mb-1">
           {meal.name}
         </p>
-        <p className="text-[#7C7C80] text-sm">{meal.description}</p>
-        {/* <div className="flex flex-row gap-2">
-          {meal.ingredients.map((ingredient, index) => (
-            <span
-              key={`ingredient-${index}`}
-              className="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10"
+        <p className="text-[#7C7C80] text-sm line-clamp-3">
+          {meal.description}
+        </p>
+      </div>
+      <button
+        onClick={toggleDropdown}
+        id="dropdownMenuIconHorizontalButton"
+        data-dropdown-toggle="dropdownDotsHorizontal"
+        className="inline-flex items-center text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        type="button"
+      >
+        <svg
+          className="w-6 h-6 text-gray-800 dark:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeWidth="3"
+            d="M12 6h.01M12 12h.01M12 18h.01"
+          />
+        </svg>
+      </button>
+      <div
+        id="dropdownDotsHorizontal"
+        className={`z-10 ${
+          isDropdownOpen ? "visible" : "invisible"
+        } bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 absolute right-0 top-[5rem]`}
+      >
+        <ul
+          className="py-2 text-sm text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownMenuIconHorizontalButton"
+        >
+          <li>
+            <button className="flex items-center px-4 py-2">
+              <svg
+                className="w-5 h-5 mr-1"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                />
+                <path
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+              </svg>
+              View
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => setMealToEdit(meal)}
+              className="flex items-center px-4 py-2"
             >
-              {ingredient}
-            </span>
-          ))}
-        </div> */}
-        {/* <div className="flex items-center justify-end gap-2 mt-4">
-          <button
-            onClick={() => setMealToEdit(meal)}
-            className="block font-medium tracking-wide text-center capitalize transition-colors duration-300 transform rounded-[14px]"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
-              />
-            </svg>
-          </button>
+              <svg
+                className="w-5 h-5 mr-1"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                />
+              </svg>
+              Edit
+            </button>
+          </li>
+        </ul>
+        <div className="py-2">
           <button
             onClick={() => deleteMeal(meal.id)}
-            className="block font-medium tracking-wide text-center capitalize transition-colors duration-300 transform rounded-[14px]"
+            className="flex items-center px-4 py-2 text-sm text-red-700"
           >
             <svg
+              className="w-5 h-5 mr-1"
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
             >
               <path
+                stroke="currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                strokeWidth="1.5"
+                d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"
               />
             </svg>
+            Delete
           </button>
-        </div> */}
+        </div>
       </div>
     </div>
   );
