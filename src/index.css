@@ -29,3 +29,61 @@ h1, h2, h3, h4, h5, h6 {
 #drawer-form {
   padding-bottom: calc(env(safe-area-inset-bottom) + 12rem)!important;
 }
+
+/* Hide the default radio button */
+.custom-radio {
+  display: none;
+}
+
+/* Create a custom radio button */
+.custom-radio + label {
+  position: relative;
+  padding-left: 2rem;
+  /* cursor: pointer; */
+  /* font-size: 18px; */
+  /* line-height: 24px; */
+  /* user-select: none; */
+  display: flex;
+  align-items: center;
+}
+
+/* The checkmark */
+.custom-radio + label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  background-color: white;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* The checked state */
+.custom-radio:checked + label::before {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+/* The checkmark inside */
+.custom-radio:checked + label::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 5px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+/* Fade effect */
+.fade {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}

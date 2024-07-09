@@ -166,7 +166,7 @@ const MealForm = ({
           <button
             type="button"
             onClick={handleAddIngredient}
-            className="inline-flex items-center border border-dotted  px-3 py-1 text-xs font-medium text-black rounded-lg end-2 bottom-2  focus:ring-4 focus:outline-none dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="inline-flex items-center border border-dotted  px-3 py-1 text-xs font-medium text-black rounded-lg end-2 bottom-2  focus:ring-4 focus:outline-none"
           >
             <IoAddOutline size="16" /> Add
           </button>
@@ -174,7 +174,7 @@ const MealForm = ({
         <div>
           <button
             type="submit"
-            className="text-white justify-center flex items-center bg-black w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-xl text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            className="text-white justify-center flex items-center bg-black w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-xl text-sm px-5 py-2.5"
           >
             Add meal
           </button>

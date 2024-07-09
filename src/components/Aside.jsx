@@ -12,7 +12,7 @@ const Aside = ({
   return (
     <div
       id="drawer-form"
-      className={`fixed top-0 left-0 z-40 h-screen p-4 pb-[9rem] overflow-y-auto transition-transform bg-white w-full dark:bg-gray-800 ${
+      className={`fixed top-0 left-0 z-40 h-screen p-4 pb-[9rem] overflow-y-auto transition-transform ease-in-out duration-500 bg-white w-full dark:bg-gray-800 ${
         isAsideOpen ? "" : "-translate-x-full"
       }`}
       tabIndex="-1"

@@ -47,17 +47,17 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (isAsideOpen) {
-      document.body.classList.add("fixed", "overflow-hidden");
-    } else {
-      document.body.classList.remove("fixed", "overflow-hidden");
-    }
+    // if (isAsideOpen) {
+    //   document.body.classList.add("fixed", "overflow-hidden");
+    // } else {
+    //   document.body.classList.remove("fixed", "overflow-hidden");
+    // }
   }, [isAsideOpen]);
 
   return (
     <>
-      <div className="p-4 bg-white min-h-screen overflow-hidden">
-        <div className="container md:max-w-2xl mx-auto pb-[5rem]">
+      <div className="p-4 bg-white min-h-screen overflow-hidden pb-[5rem]">
+        <div className="container md:max-w-2xl mx-auto">
           <Header />
           <Routes>
             <Route

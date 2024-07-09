@@ -1,7 +1,12 @@
 import React from "react";
+import IngredientsList from "../components/IngredientsList";
 
 function List() {
-  return <div>List</div>;
+  return (
+    <>
+      <IngredientsList />
+    </>
+  );
 }
 
 export default List;
