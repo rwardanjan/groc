@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import { IoAddOutline } from "react-icons/io5";
+import { Button } from "../components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
-const MealForm = ({
-  addMeal,
-  editMeal,
-  mealToEdit,
-  setMealToEdit,
-  closeAside,
-}) => {
+const MealForm = ({ editMeal, mealToEdit, setMealToEdit, closeAside }) => {
   const [meal, setMeal] = useState({
     name: "",
     description: "",
@@ -16,6 +20,11 @@ const MealForm = ({
   });
   const ingredientRefs = useRef([]);
   const [focusIndex, setFocusIndex] = useState(null);
+
+  const addMeal = (meal) => {
+    meal.id = Date.now();
+    setMeals([...meals, meal]);
+  };
 
   useEffect(() => {
     if (mealToEdit) {
@@ -100,6 +109,7 @@ const MealForm = ({
             placeholder="Pasta Carbonara"
             required
           />
+          <Input />
         </div>
         <div className="mb-5">
           <label
@@ -172,12 +182,13 @@ const MealForm = ({
           </button>
         </div>
         <div>
-          <button
+          <Button onClick={handleAddIngredient}>Add meal</Button>
+          {/* <button
             type="submit"
             className="text-white justify-center flex items-center bg-black w-full focus:ring-4 focus:ring-blue-300 font-medium rounded-xl text-sm px-5 py-2.5"
           >
             Add meal
-          </button>
+          </button> */}
         </div>
       </form>
     </>

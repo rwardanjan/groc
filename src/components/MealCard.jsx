@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
 
 const MealCard = ({ meal, setMealToEdit, deleteMeal }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -29,12 +31,12 @@ const MealCard = ({ meal, setMealToEdit, deleteMeal }) => {
 
   if (!meal.image) {
     meal.image =
-      "https://images.unsplash.com/photo-1606756790138-261d2b21cd75?q=80&w=3703&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+      "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?resize=768,574";
   }
   return (
-    <div className="flex items-center gap-6 relative mt-3" ref={dropdownRef}>
+    <div className="flex items-center gap-4 relative mt-3" ref={dropdownRef}>
       <div
-        className="aspect-square h-full rounded-2xl min-w-[25%] max-w-[25%]"
+        className="aspect-square h-full rounded-xl min-w-[48px] max-w-[48px]"
         style={{
           backgroundImage: "url(" + meal.image + ")",
           backgroundPosition: "center",
@@ -46,7 +48,13 @@ const MealCard = ({ meal, setMealToEdit, deleteMeal }) => {
         <p className="font-bold text-gray-700 text-l leading-7 mb-1">
           {meal.name}
         </p>
-        <p className="text-[#7C7C80] text-sm line-clamp-3">
+        <Badge className="mr-1" variant="secondary">
+          {meal.dishType}
+        </Badge>
+        <Badge className="mr-1" variant={meal.prepLevel.toLowerCase()}>
+          {meal.prepLevel}
+        </Badge>
+        <p className="text-[#7C7C80] text-sm line-clamp-2">
           {meal.description}
         </p>
       </div>
@@ -54,7 +62,7 @@ const MealCard = ({ meal, setMealToEdit, deleteMeal }) => {
         onClick={toggleDropdown}
         id="dropdownMenuIconHorizontalButton"
         data-dropdown-toggle="dropdownDotsHorizontal"
-        className="inline-flex items-center text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        className="inline-flex items-center text-sm ml-auto font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         type="button"
       >
         <svg
@@ -85,29 +93,31 @@ const MealCard = ({ meal, setMealToEdit, deleteMeal }) => {
           aria-labelledby="dropdownMenuIconHorizontalButton"
         >
           <li>
-            <button className="flex items-center px-4 py-2">
-              <svg
-                className="w-5 h-5 mr-1"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
-                />
-                <path
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                />
-              </svg>
-              View
-            </button>
+            <Link to={`/meal/${meal.id}`}>
+              <button className="flex items-center px-4 py-2">
+                <svg
+                  className="w-5 h-5 mr-1"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                  />
+                  <path
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                  />
+                </svg>
+                View
+              </button>
+            </Link>
           </li>
           <li>
             <button
