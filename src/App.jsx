@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { RouterProvider } from "react-router-dom";
 import {
   createBrowserRouter,
@@ -7,11 +7,12 @@ import {
 } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import HomeLayout from "./layouts/HomeLayout";
-import Meals from "./pages/Meals";
 import Plan from "./pages/Plan";
 import Settings from "./pages/Settings";
 import List from "./pages/ShoppingList";
 import MealDetailPage from "./pages/MealDetailPage";
+import SkeletonMeal from "./components/SkeletonMeal";
+import MealsLoader from "./components/MealsLoader";
 import NotFound from "./pages/NotFound"; // Assuming you have a NotFound component
 import { fetchMeals, fetchMealById, fetchIngredients } from "./util/api";
 
@@ -21,11 +22,11 @@ const router = createBrowserRouter(
       <Route element={<HomeLayout />}>
         <Route
           index
-          element={<Meals />}
-          loader={async () => {
-            const meals = await fetchMeals();
-            return { meals };
-          }}
+          element={
+            <Suspense fallback={<SkeletonMeal />}>
+              <MealsLoader />
+            </Suspense>
+          }
         />
         <Route
           path="meal/:mealId"

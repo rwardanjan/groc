@@ -1,53 +1,43 @@
-const API_URL = "http://localhost:3000";
+import axios from "axios";
 
-async function handleResponse(response) {
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.message || "Network response was not ok");
-  }
-  return response.json();
-}
+const API_URL = "https://groc-json.vercel.app";
 
 export async function fetchMeals() {
-  const response = await fetch(`${API_URL}/dishes`);
-  return handleResponse(response);
+  try {
+    const response = await axios.get(`${API_URL}/dishes`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching meals:", error);
+    throw new Error("Could not fetch meals. Please try again later.");
+  }
 }
 
 export async function fetchMealById(id) {
-  const response = await fetch(`${API_URL}/dishes/${id}`);
-  return handleResponse(response);
+  try {
+    const response = await axios.get(`${API_URL}/dishes/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching meal with id ${id}:`, error);
+    throw new Error("Could not fetch the meal. Please try again later.");
+  }
 }
 
 export async function fetchIngredients() {
-  const response = await fetch(`${API_URL}/ingredients`);
-  return handleResponse(response);
+  try {
+    const response = await axios.get(`${API_URL}/ingredients`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching ingredients:", error);
+    throw new Error("Could not fetch ingredients. Please try again later.");
+  }
 }
 
 export async function addMeal(meal) {
-  const response = await fetch(`${API_URL}/dishes`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(meal),
-  });
-  return handleResponse(response);
-}
-
-export async function updateMeal(meal) {
-  const response = await fetch(`${API_URL}/dishes/${meal.id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(meal),
-  });
-  return handleResponse(response);
-}
-
-export async function deleteMeal(id) {
-  const response = await fetch(`${API_URL}/dishes/${id}`, {
-    method: "DELETE",
-  });
-  return handleResponse(response);
+  try {
+    const response = await axios.post(`${API_URL}/dishes`, meal);
+    return response.data;
+  } catch (error) {
+    console.error("Error adding meal:", error);
+    throw new Error("Could not add the meal. Please try again later.");
+  }
 }
