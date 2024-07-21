@@ -53,13 +53,18 @@ const MealCard = ({ meal, setMealToEdit, deleteMeal }) => {
             <img
               src={meal.image}
               alt={meal.name}
-              width="64"
-              height="64"
+              width="52"
+              height="52"
               className="aspect-square rounded-md object-cover"
               loading="lazy"
             />
           </CardDescription>
-          <CardTitle>{meal.name}</CardTitle>
+          <div className="block flex-col">
+            <CardTitle className="mb-1">{meal.name}</CardTitle>
+            <span className="text-muted-foreground/50 text-sm">
+              {meal.prepLevel}
+            </span>
+          </div>
         </CardHeader>
         <CardFooter className="ml-auto p-0 pr-3">
           <Link to={`/meal/${meal.id}`}>

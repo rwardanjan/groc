@@ -1,15 +1,10 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
 import MealList from "../components/MealList";
-import { useLoaderData, Link } from "react-router-dom";
 
-const Home = () => {
+const Meals = () => {
   const { meals } = useLoaderData();
-
-  return (
-    <>
-      <MealList meals={meals} />
-    </>
-  );
+  return <MealList meals={meals} />;
 };
 
-export default Home;
+export default Meals;

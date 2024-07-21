@@ -33,7 +33,11 @@ const IngredientsList = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Ingredients</h2>
+      <div className="mt-7">
+        <h1 className="text-3xl tracking-tighter font-bold mb-8">
+          Ingredients
+        </h1>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <h3 className="text-md font-semibold mb-1">To Buy</h3>

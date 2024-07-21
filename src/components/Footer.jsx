@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import MealForm from "./MealForm";
-import { PlusCircledIcon } from "@radix-ui/react-icons";
 import {
   IoAddCircle,
   IoHomeOutline,
@@ -53,18 +52,18 @@ const Footer = () => {
           <span className="sr-only">Plan</span>
         </Link>
         <Drawer className="h-full">
-          <DrawerTrigger className="inline-flex flex-col items-center text-left p-4 group">
-            <IoAddCircle className="w-8 h-8 text-gray-500 text-primary" />
+          <DrawerTrigger className="inline-flex flex-col items-center text-left p-4 group border-transparent focus:border-transparent focus:ring-0 focus:outline-none">
+            <IoAddCircle className="w-9 h-9 text-gray-500 text-primary" />
             <span className="sr-only">New post</span>
           </DrawerTrigger>
-          <DrawerContent className="bg-white flex flex-col fixed bottom-0 left-0 right-0 h-full max-h-[96%]">
+          <DrawerContent className="bg-white flex flex-col fixed bottom-0 left-0 right-0 max-h-[96%] focus:outline-none">
             <DrawerHeader className="text-left">
               <DrawerTitle>Voeg een nieuwe recept toe</DrawerTitle>
             </DrawerHeader>
             <div className="p-4 max-w-md w-full mx-auto flex flex-col overflow-auto">
               <MealForm />
             </div>
-            <DrawerFooter className="pb-8">
+            <DrawerFooter className="pb-[env(safe-area-inset-bottom)]">
               <Button>Voeg toe</Button>
             </DrawerFooter>
           </DrawerContent>
