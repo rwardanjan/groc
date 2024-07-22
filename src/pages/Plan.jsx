@@ -11,9 +11,8 @@ const Plan = () => {
   useEffect(() => {
     const loadWeeklyMenus = async () => {
       try {
-        const menus = await fetchWeeklyMenus(); // Fetch all weekly menus
-        // Find the active weekly menu; adjust the condition based on your data structure
-        const activeMenu = menus.find((menu) => menu.active); // Assuming there's an `isActive` property
+        const menus = await fetchWeeklyMenus();
+        const activeMenu = menus.find((menu) => menu.active);
         setWeeklyMenu(activeMenu);
       } catch (error) {
         console.error("Failed to load weekly menus:", error);

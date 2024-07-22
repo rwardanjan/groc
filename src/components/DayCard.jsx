@@ -84,7 +84,10 @@ const DayCard = ({ day: dayProp, meals: initialMeals }) => {
                   onClick={() => handleAddMeal(meal)}
                 >
                   <img
-                    src={meal.imageUrl || "https://via.placeholder.com/36"}
+                    src={
+                      meal.imageUrl ||
+                      "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?resize=768,574"
+                    }
                     alt={meal.name}
                     width="36"
                     height="36"
