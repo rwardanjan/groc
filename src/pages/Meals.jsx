@@ -1,9 +1,7 @@
-import React from "react";
-import { useLoaderData } from "react-router-dom";
+import React, { Suspense } from "react";
 import MealList from "../components/MealList";
 
-const Meals = () => {
-  const { meals } = useLoaderData();
+const Meals = ({ meals }) => {
   return <MealList meals={meals} />;
 };
 

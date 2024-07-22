@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchMeals } from "../util/api";
-import MealList from "../components/MealList";
 import SkeletonMeal from "../components/SkeletonMeal";
+import Meals from "@/pages/Meals";
 
 const MealsLoader = () => {
   const [meals, setMeals] = useState([]);
@@ -31,7 +31,7 @@ const MealsLoader = () => {
     return <div>{error}</div>;
   }
 
-  return <MealList meals={meals} />;
+  return <Meals meals={meals} />;
 };
 
 export default MealsLoader;

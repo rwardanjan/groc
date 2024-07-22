@@ -42,3 +42,32 @@ export async function addMeal(meal) {
     throw new Error("Could not add the meal. Please try again later.");
   }
 }
+
+export async function deleteMeal(id) {
+  try {
+    await axios.delete(`${API_URL}/dishes/${id}`);
+  } catch (error) {
+    console.error(`Error deleting meal with id ${id}:`, error);
+    throw new Error("Could not delete the meal. Please try again later.");
+  }
+}
+
+export async function updateMeal(id, meal) {
+  try {
+    const response = await axios.put(`${API_URL}/dishes/${id}`, meal);
+    return response.data;
+  } catch (error) {
+    console.error(`Error updating meal with id ${id}:`, error);
+    throw new Error("Could not update the meal. Please try again later.");
+  }
+}
+
+export async function fetchWeeklyMenus() {
+  try {
+    const response = await axios.get(`${API_URL}/weeklyMenus`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching week menu:", error);
+    throw new Error("Could not fetch week menu. Please try again later.");
+  }
+}

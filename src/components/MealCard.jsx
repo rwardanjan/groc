@@ -46,7 +46,7 @@ const MealCard = ({ meal, setMealToEdit, deleteMeal }) => {
   }
   return (
     <>
-      <Card className="flex items-center gap-3 mb-3">
+      <Card className="flex items-center gap-3 mb-3 shadow-sm">
         <CardHeader className="flex items-center gap-4 flex-row">
           <CardDescription>
             {" "}
@@ -60,7 +60,7 @@ const MealCard = ({ meal, setMealToEdit, deleteMeal }) => {
             />
           </CardDescription>
           <div className="block flex-col">
-            <CardTitle className="mb-1">{meal.name}</CardTitle>
+            <CardTitle className="">{meal.name}</CardTitle>
             <span className="text-muted-foreground/50 text-sm">
               {meal.prepLevel}
             </span>
