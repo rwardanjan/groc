@@ -2,37 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DayCard from "@/components/DayCard";
-import { fetchWeeklyMenus } from "../util/api"; // Ensure this function is properly defined
 
-const Plan = () => {
-  const [weeklyMenu, setWeeklyMenu] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadWeeklyMenus = async () => {
-      try {
-        const menus = await fetchWeeklyMenus();
-        const activeMenu = menus.find((menu) => menu.active);
-        setWeeklyMenu(activeMenu);
-      } catch (error) {
-        console.error("Failed to load weekly menus:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadWeeklyMenus();
-  }, []);
-
-  if (loading) {
-    return <p>Loading...</p>; // Show a loading message or spinner
-  }
-
-  if (!weeklyMenu) {
-    return <p>No active weekly menu found.</p>; // Handle case where no weekly menu is found
-  }
-  console.log(weeklyMenu);
-
+const Plan = ({ weeklyMenu }) => {
   return (
     <>
       <div className="mt-7 mb-4">

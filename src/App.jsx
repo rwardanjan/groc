@@ -5,8 +5,9 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import MealsLoader from "./components/MealsLoader";
-import SkeletonMeal from "./components/SkeletonMeal";
+import MealsLoader from "./components/loaders/MealsLoader";
+import PlanLoader from "./components/loaders/PlanLoader";
+import SkeletonMeal from "./components/skeletons/SkeletonMeal";
 import HomeLayout from "./layouts/HomeLayout";
 import RootLayout from "./layouts/RootLayout";
 import MealDetailPage from "./pages/MealDetailPage";
@@ -59,7 +60,7 @@ const App = () => {
                 }}
               />
             </Route>
-            <Route path="plan" element={<Plan />} />
+            <Route path="plan" element={<PlanLoader />} />
             <Route path="list" element={<List />} />
             <Route path="settings" element={<Settings />} />
             <Route path="*" element={<NotFound />} />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { fetchMeals } from "../util/api";
-import SkeletonMeal from "../components/SkeletonMeal";
+import { fetchMeals } from "../../util/api";
+import SkeletonMeal from "../skeletons/SkeletonMeal";
 import Meals from "@/pages/Meals";
 
 const MealsLoader = () => {
