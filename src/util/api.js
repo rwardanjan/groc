@@ -4,7 +4,7 @@ const API_URL = "https://groc-json.vercel.app";
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 export async function fetchMeals() {
   try {
-    await delay(250);
+    // await delay(250);
     const response = await axios.get(`${API_URL}/dishes`);
     return response.data;
   } catch (error) {
