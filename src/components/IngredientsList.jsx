@@ -33,10 +33,11 @@ const IngredientsList = () => {
 
   return (
     <div>
-      <div className="mt-7">
-        <h1 className="text-3xl tracking-tighter font-bold mb-8">
-          Ingredients
-        </h1>
+      <div class="mt-7 mb-7">
+        <h1 className="text-3xl font-bold tracking-tight">Grocery List</h1>
+        <p className="text-muted-foreground text-sm">
+          Select items as you shop
+        </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
