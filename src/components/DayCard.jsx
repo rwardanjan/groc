@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { PlusIcon, DotsVerticalIcon } from "@radix-ui/react-icons";
+import { format, parseISO } from "date-fns";
 import {
   Drawer,
   DrawerTrigger,
@@ -45,27 +46,24 @@ const DayCard = ({ day: dayProp, meals: initialMeals }) => {
     setIsDrawerOpen(false);
   };
 
-  const formatDate = (dateStr) => {
-    const date = new Date(dateStr);
-    if (isNaN(date.getTime())) {
-      // Handle invalid date
-      return { weekday: "Unknown", month: "Unknown", day: "Unknown" };
-    }
-    const options = { weekday: "long", month: "short", day: "numeric" };
-    const formattedDate = date.toLocaleDateString("en-US", options);
-    const [weekday, month, day] = formattedDate.split(" ");
+  const formatDate = (dateString) => {
+    const date = parseISO(dateString);
+    const formattedWeekday = format(date, "EEEE"); // Weekday long
+    const formattedMonth = format(date, "MMM"); // Month short
+    const formattedDay = format(date, "d"); // Day numeric
 
-    return { weekday, month, day };
+    return { formattedWeekday, formattedMonth, formattedDay };
   };
 
-  const { weekday, month, day } = formatDate(dayProp || "");
+  const { formattedWeekday, formattedMonth, formattedDay } =
+    formatDate(dayProp);
 
   return (
     <Card className="gap-3 mb-3 shadow-sm">
       <CardHeader className="flex items-center gap-4 flex-row">
         <CardTitle className="text-lg font-bold">
-          {weekday}{" "}
-          <span className="text-sm text-muted-foreground">{`${month} ${day}`}</span>
+          {formattedWeekday}{" "}
+          <span className="text-sm text-muted-foreground">{`${formattedMonth} ${formattedDay}`}</span>
         </CardTitle>
         <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
           <DrawerTrigger className="ml-auto text-md font-bold text-primary focus:border-transparent focus:ring-0 focus:outline-none">
