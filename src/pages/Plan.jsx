@@ -11,8 +11,8 @@ const Plan = ({ weeklyMenu }) => {
       </div>
       <Tabs defaultValue="current" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="current">Current</TabsTrigger>
-          <TabsTrigger value="history">History</TabsTrigger>
+          <TabsTrigger value="current">Actief</TabsTrigger>
+          <TabsTrigger value="history">Geschiedenis</TabsTrigger>
         </TabsList>
         <TabsContent value="current">
           {weeklyMenu.mealPlanEntries.map((entry) => (

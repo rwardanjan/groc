@@ -17,6 +17,14 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import { Card, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { fetchMeals } from "../util/api"; // Ensure this function is properly defined
@@ -72,31 +80,45 @@ const DayCard = ({ day: dayProp, meals: initialMeals }) => {
           </DrawerTrigger>
           <DrawerContent className="bg-white flex flex-col fixed bottom-0 left-0 right-0 max-h-[96%] focus:outline-none">
             <DrawerHeader className="text-left">
-              <DrawerTitle>Select Recipe</DrawerTitle>
+              <DrawerTitle>Kies een gerecht</DrawerTitle>
             </DrawerHeader>
-            <div className="p-4 max-w-md w-full mx-auto flex flex-col overflow-auto gap-2">
-              {availableMeals.map((meal) => (
-                <div
-                  key={meal.id}
-                  className="flex items-center gap-2 cursor-pointer"
-                  onClick={() => handleAddMeal(meal)}
-                >
-                  <img
-                    src={
-                      meal.imageUrl ||
-                      "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?resize=768,574"
-                    }
-                    alt={meal.name}
-                    width="36"
-                    height="36"
-                    className="aspect-square rounded-md object-cover"
-                  />
-                  <span>{meal.name}</span>
-                </div>
-              ))}
-            </div>
+            <Command>
+              <CommandInput placeholder="Zoek gerecht..." />
+              <CommandList>
+                <CommandEmpty>Geen gerechten gevonden</CommandEmpty>
+                <CommandGroup>
+                  {availableMeals.map((meal) => (
+                    <CommandItem
+                      key={meal.id}
+                      value={meal.name}
+                      onSelect={(value) => {
+                        handleAddMeal(
+                          availableMeals.find(
+                            (currentValue) => currentValue.name === value
+                          ) || null
+                        );
+                      }}
+                    >
+                      <div className="flex items-center gap-2 cursor-pointer">
+                        <img
+                          src={
+                            meal.imageUrl ||
+                            "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?resize=768,574"
+                          }
+                          alt={meal.name}
+                          width="36"
+                          height="36"
+                          className="aspect-square rounded-md object-cover"
+                        />
+                        <span>{meal.name}</span>
+                      </div>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
             <DrawerFooter className="pb-[env(safe-area-inset-bottom)]">
-              <Button onClick={() => setIsDrawerOpen(false)}>Close</Button>
+              <Button onClick={() => setIsDrawerOpen(false)}>Sluit</Button>
             </DrawerFooter>
           </DrawerContent>
         </Drawer>

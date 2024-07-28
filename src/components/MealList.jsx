@@ -3,10 +3,11 @@ import MealCard from "./MealCard";
 
 const MealList = ({ meals, deleteMeal, setMealToEdit }) => {
   return (
-    <div className="mt-4">
-      {meals.map((meal) => (
+    <div className="mt-4 mb-[7rem]">
+      {meals.map((meal, index) => (
         <MealCard
           key={meal.id}
+          index={index}
           meal={meal}
           deleteMeal={deleteMeal}
           setMealToEdit={setMealToEdit}

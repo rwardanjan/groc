@@ -1,20 +1,19 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState, lazy } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
-import MealsLoader from "./components/loaders/MealsLoader";
-import PlanLoader from "./components/loaders/PlanLoader";
 import SkeletonMeal from "./components/skeletons/SkeletonMeal";
 import HomeLayout from "./layouts/HomeLayout";
 import RootLayout from "./layouts/RootLayout";
 import MealDetailPage from "./pages/MealDetailPage";
 import NotFound from "./pages/NotFound";
-import Plan from "./pages/Plan";
-import Settings from "./pages/Settings";
-import List from "./pages/ShoppingList";
+const Settings = lazy(() => import("./pages/Settings"));
+const List = lazy(() => import("./pages/ShoppingList"));
+const MealsLoader = lazy(() => import("./components/loaders/MealsLoader"));
+const PlanLoader = lazy(() => import("./components/loaders/PlanLoader"));
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import { fetchMealById } from "./util/api";
@@ -60,9 +59,30 @@ const App = () => {
                 }}
               />
             </Route>
-            <Route path="plan" element={<PlanLoader />} />
-            <Route path="list" element={<List />} />
-            <Route path="settings" element={<Settings />} />
+            <Route
+              path="plan"
+              element={
+                <Suspense fallback={<SkeletonMeal />}>
+                  <PlanLoader />
+                </Suspense>
+              }
+            />
+            <Route
+              path="list"
+              element={
+                <Suspense fallback={<SkeletonMeal />}>
+                  <List />
+                </Suspense>
+              }
+            />
+            <Route
+              path="settings"
+              element={
+                <Suspense fallback={<SkeletonMeal />}>
+                  <Settings />
+                </Suspense>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Route>
