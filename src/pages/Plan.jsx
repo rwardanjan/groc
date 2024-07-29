@@ -12,7 +12,7 @@ const Plan = ({ weeklyMenu }) => {
       <Tabs defaultValue="current" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="current">Actief</TabsTrigger>
-          <TabsTrigger value="history">Geschiedenis</TabsTrigger>
+          <TabsTrigger value="history">Verlopen</TabsTrigger>
         </TabsList>
         <TabsContent value="current">
           {weeklyMenu.mealPlanEntries.map((entry) => (
@@ -23,7 +23,7 @@ const Plan = ({ weeklyMenu }) => {
             />
           ))}
         </TabsContent>
-        <TabsContent value="history">History</TabsContent>
+        <TabsContent value="history">Verlopen</TabsContent>
       </Tabs>
     </>
   );
